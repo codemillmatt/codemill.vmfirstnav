@@ -11,17 +11,26 @@ Task ("Default").Does (() =>
 	DotNetBuild ("./VMFirstNav.sln", c => c.Configuration = "Release");
 });
 
-//Task ("NuGetPack")
-//	.IsDependentOn ("Default")
-//	.Does (() =>
-//{
-//	NuGetPack ("./VMFirstNav.nuspec", new NuGetPackSettings { 
-//		Version = version,
-//		Verbosity = NuGetVerbosity.Detailed,
-//		OutputDirectory = "./",
-//		BasePath = "./",
-//	});	
-//});
+Task ("NuGetPack")
+	.IsDependentOn ("Default")
+	.Does (() =>
+{
+    var formsDependency = new NuSpecDependency {
+        Id = "Xamarin.Forms",
+        Version = "2.3.0.49"
+    };
+    
+    var deps = new List<NuSpecDependency>();
+    deps.Add(formsDependency);
+
+	NuGetPack ("./VMFirstNav.nuspec", new NuGetPackSettings { 
+		Version = version,
+		Verbosity = NuGetVerbosity.Detailed,
+		OutputDirectory = "./",
+		BasePath = "./",
+        Dependencies = deps
+	});	
+});
 
 
 RunTarget (TARGET);
