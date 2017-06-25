@@ -17,18 +17,26 @@ Task ("NuGetPack")
 {
     var formsDependency = new NuSpecDependency {
         Id = "Xamarin.Forms",
-        Version = "2.3.0.49"
+        Version = "2.3.4.247"
     };
     
     var deps = new List<NuSpecDependency>();
     deps.Add(formsDependency);
 
-	NuGetPack ("./VMFirstNav.nuspec", new NuGetPackSettings { 
+	NuGetPack (new NuGetPackSettings { 
+		Id = "CodeMill.VMFirstNav",
+		Authors = new List<string> {"Matthew Soucoup"},
 		Version = version,
+		Title = "View Model First Navigation for Xamarin.Forms",
+		Description="Perform navigation from view models in Xamarin.Forms without having to pass in the navigation object into the VM layer.",
+		Owners = new List<string> { "codemillmatt" },
+		ProjectUrl = new Uri("https://github.com/codemillmatt/codemill.vmfirstnav"),
+		LicenseUrl = new Uri("https://github.com/codemillmatt/codemill.vmfirstnav/blob/master/LICENSE"),
 		Verbosity = NuGetVerbosity.Detailed,
-		OutputDirectory = "./",
-		BasePath = "./",
-        Dependencies = deps
+		OutputDirectory = ".",
+		BasePath = ".",
+        Dependencies = deps,
+		ReleaseNotes = new List<string> { "Visit https://github.com/codemillmatt/codemill.vmfirstnav/changelog.md to see list of changes." }
 	});	
 });
 

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace codemill.VMFirstNav
+namespace CodeMill.VMFirstNav
 {
     // Marker interface
     public interface IViewModel

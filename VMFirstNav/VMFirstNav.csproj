@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard1.2</TargetFramework>
     <RootNamespace>codemill.VMFirstNav</RootNamespace>
-    <AssemblyName>codemill.VMFirstNav</AssemblyName>
+    <AssemblyName>CodeMill.VMFirstNav</AssemblyName>
     <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
     <PackageId>codemill.VMFirstNav</PackageId>
     <Authors>Matt Soucoup</Authors>

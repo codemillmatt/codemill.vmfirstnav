@@ -1,5 +1,5 @@
 ﻿using System;
-namespace codemill.VMFirstNav
+namespace CodeMill.VMFirstNav
 {
     // IViewFor should only be a marker interface
     public interface IViewFor { }

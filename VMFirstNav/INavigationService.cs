@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace codemill.VMFirstNav
+namespace CodeMill.VMFirstNav
 {
     public interface INavigationService
     {
