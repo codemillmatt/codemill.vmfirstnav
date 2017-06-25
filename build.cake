@@ -24,8 +24,8 @@ Task ("NuGetPack")
     deps.Add(formsDependency);
 
 	var contentFile = new NuSpecContent {
-		Source = @"VMFirstNav\bin\Release\netstandard1.2\codemill.VMFirstNav.*",
-		Target = @"lib\netstandard1.2"
+		Source = @"VMFirstNav\bin\Release\netstandard1.0\codemill.VMFirstNav.*",
+		Target = @"lib\netstandard1.0"
 	};
 
 	var files = new List<NuSpecContent>();

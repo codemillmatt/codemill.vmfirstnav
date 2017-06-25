@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.2</TargetFramework>
+    <TargetFramework>netstandard1.0</TargetFramework>
     <RootNamespace>codemill.VMFirstNav</RootNamespace>
     <AssemblyName>CodeMill.VMFirstNav</AssemblyName>
     <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
