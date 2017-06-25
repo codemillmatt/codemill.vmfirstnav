@@ -23,6 +23,14 @@ Task ("NuGetPack")
     var deps = new List<NuSpecDependency>();
     deps.Add(formsDependency);
 
+	var contentFile = new NuSpecContent {
+		Source = @"VMFirstNav\bin\Release\netstandard1.2\codemill.VMFirstNav.*",
+		Target = @"lib\netstandard1.2"
+	};
+
+	var files = new List<NuSpecContent>();
+	files.Add(contentFile);
+
 	NuGetPack (new NuGetPackSettings { 
 		Id = "CodeMill.VMFirstNav",
 		Authors = new List<string> {"Matthew Soucoup"},
@@ -36,7 +44,8 @@ Task ("NuGetPack")
 		OutputDirectory = ".",
 		BasePath = ".",
         Dependencies = deps,
-		ReleaseNotes = new List<string> { "Visit https://github.com/codemillmatt/codemill.vmfirstnav/changelog.md to see list of changes." }
+		ReleaseNotes = new List<string> { "Visit https://github.com/codemillmatt/codemill.vmfirstnav/changelog.md to see list of changes." },
+		Files = files
 	});	
 });
 
