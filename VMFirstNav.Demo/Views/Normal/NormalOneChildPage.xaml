@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VMFirstNav.Demo.NormalOneChildPage"
+    Title="{Binding Title}">
+	<ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label XAlign="Center" Text="{Binding Description}"></Label>
+            <Button Text="Show Modal" Command="{Binding NavigatePopup}"/>
+            <Button Text="Two" Command="{Binding NavigateTwo}"/>
+        </StackLayout>      
+	</ContentPage.Content>
+</ContentPage>

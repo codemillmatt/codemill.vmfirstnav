@@ -10,6 +10,8 @@ namespace CodeMill.VMFirstNav
 
         Task PopAsync();
         Task PopModalAsync();
+        void PopTo<T>() where T : class, IViewModel;
+        Task PopAsync<T>(Action<T> reInitialize = null) where T : class, IViewModel;
         Task PushAsync<T>(T viewModel) where T : class, IViewModel;
         Task PushAsync<T>(Action<T> initialize = null) where T : class, IViewModel;
         Task PushModalAsync<T>(Action<T> initialize = null) where T : class, IViewModel;
