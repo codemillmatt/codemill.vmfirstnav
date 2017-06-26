@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Reflection;
 
 namespace CodeMill.VMFirstNav
 {
@@ -62,33 +63,33 @@ namespace CodeMill.VMFirstNav
 			}
 		}
 
-		//public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
-		//{
+		public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
+		{
             
-		//	var view = InstantiateView(viewModel);
+			var view = InstantiateViewForSwitchDetailPage(viewModel);
 
-		//	Page newDetailPage;
+			Page newDetailPage;
 
-		//	// Tab pages shouldn't go into navigation pages
-		//	if (view is TabbedPage)
-		//		newDetailPage = (Page)view;
-		//	else
-		//		newDetailPage = new NavigationPage((Page)view);
+			// Tab pages shouldn't go into navigation pages
+			if (view is TabbedPage)
+				newDetailPage = (Page)view;
+			else
+				newDetailPage = new NavigationPage((Page)view);
 
-		//	DetailPage = newDetailPage;
-		//}
+			DetailPage = newDetailPage;
+		}
 
-		//public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
-		//{
-		//	T viewModel;
+		public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
+		{
+			T viewModel;
 
-		//	// First instantiate the view model
-		//	viewModel = Activator.CreateInstance<T>();
-		//	initialize?.Invoke(viewModel);
+			// First instantiate the view model
+			viewModel = Activator.CreateInstance<T>();
+			initialize?.Invoke(viewModel);
 
-		//	// Actually switch the page
-		//	SwitchDetailPage(viewModel);
-		//}
+			// Actually switch the page
+			SwitchDetailPage(viewModel);
+		}
 
 		#endregion
 
@@ -235,5 +236,20 @@ namespace CodeMill.VMFirstNav
 
 			return view;
 		}
+
+        IViewFor InstantiateViewForSwitchDetailPage<T>(T viewModel) where T : class, IViewModel
+        {
+            var viewModelType = viewModel.GetType();
+
+            var viewType = _viewModelViewDictionary[viewModelType];
+
+            var view = (IViewFor)Activator.CreateInstance(viewType);
+
+            var viewModelProperty = view.GetType().GetRuntimeProperty(nameof(IViewFor<T>.ViewModel));
+
+            viewModelProperty?.SetValue(view, viewModel);
+
+            return view;
+        }
     }
 }

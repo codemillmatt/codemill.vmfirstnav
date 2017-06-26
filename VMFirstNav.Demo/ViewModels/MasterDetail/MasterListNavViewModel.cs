@@ -64,7 +64,7 @@ namespace VMFirstNav.Demo
                             var viewModel = Activator.CreateInstance(viewModelType) as IViewModel;
 
 							// Perform the switch
-							//_navService.SwitchDetailPage(viewModel);
+							_navService.SwitchDetailPage(viewModel);
 						}
 					});
 				}
