@@ -288,3 +288,7 @@ __pycache__/
 *.xsd.cs
 
 .droidres/.vmfirstnav.droidres.db
+
+.droidres/.vmfirstnav.droidres.db
+
+*.db
