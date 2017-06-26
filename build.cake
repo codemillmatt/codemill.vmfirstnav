@@ -8,7 +8,7 @@ Task ("Default").Does (() =>
 {
 	NuGetRestore ("./VMFirstNav.sln");
 
-	DotNetBuild ("./VMFirstNav.sln", c => c.Configuration = "Release");
+	DotNetBuild ("./VMFirstNav.sln", c => c.Configuration = "AppVeyor");
 });
 
 Task ("NuGetPack")
