@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VMFirstNav.Demo"
+    x:Class="VMFirstNav.Demo.RootTabPage">
+
+    <NavigationPage Title="First">
+        <x:Arguments>
+            <local:TabOneView x:Name="tabOne" />    
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Second">
+        <x:Arguments>
+            <local:TabTwoView x:Name="tabTwo" />
+        </x:Arguments>
+    </NavigationPage>
+    
+</TabbedPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    x:Class="VMFirstNav.Demo.MasterListNavPage"
+    BackgroundColor="#333333"
+    Title="{Binding Title}" xmlns:local="clr-namespace:VMFirstNav.Demo;assembly=VMFirstNav.Demo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+        <ListView SeparatorVisibility="None" 
+                    Margin="0,50,0,0"
+                    ItemsSource="{Binding AvailablePages}" 
+                    BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="30,0,0,0">
+                            <Label Text="{Binding DisplayName}" TextColor="#AAAAAA" FontSize="25" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Label Text=""/>
+            </ListView.Footer>
+            <ListView.Behaviors>
+                <local:ListViewSelectedItemBehavior Command="{Binding NavigateCommand}"
+                        Converter="{StaticResource SelectedItemConverter}" />
+            </ListView.Behaviors>   
+        </ListView> 
+    </ContentPage.Content>
+</ContentPage>

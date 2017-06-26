@@ -62,32 +62,33 @@ namespace CodeMill.VMFirstNav
 			}
 		}
 
-		public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
-		{
-			var view = InstantiateView(viewModel);
+		//public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
+		//{
+            
+		//	var view = InstantiateView(viewModel);
 
-			Page newDetailPage;
+		//	Page newDetailPage;
 
-			// Tab pages shouldn't go into navigation pages
-			if (view is TabbedPage)
-				newDetailPage = (Page)view;
-			else
-				newDetailPage = new NavigationPage((Page)view);
+		//	// Tab pages shouldn't go into navigation pages
+		//	if (view is TabbedPage)
+		//		newDetailPage = (Page)view;
+		//	else
+		//		newDetailPage = new NavigationPage((Page)view);
 
-			DetailPage = newDetailPage;
-		}
+		//	DetailPage = newDetailPage;
+		//}
 
-		public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
-		{
-			T viewModel;
+		//public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
+		//{
+		//	T viewModel;
 
-			// First instantiate the view model
-			viewModel = Activator.CreateInstance<T>();
-			initialize?.Invoke(viewModel);
+		//	// First instantiate the view model
+		//	viewModel = Activator.CreateInstance<T>();
+		//	initialize?.Invoke(viewModel);
 
-			// Actually switch the page
-			SwitchDetailPage(viewModel);
-		}
+		//	// Actually switch the page
+		//	SwitchDetailPage(viewModel);
+		//}
 
 		#endregion
 
@@ -119,6 +120,16 @@ namespace CodeMill.VMFirstNav
 
 		#region Pop
 
+		public async Task PopAsync<T>(Action<T> reInitialize = null) where T : class, IViewModel
+		{
+			await PopAsync();
+
+			var topPage = FormsNavigation.NavigationStack.Last() as IViewFor<T>;
+
+			if (topPage != null)
+				reInitialize?.Invoke(topPage.ViewModel);
+		}
+
 		public async Task PopAsync()
 		{
 			await FormsNavigation.PopAsync(true);
@@ -133,6 +144,36 @@ namespace CodeMill.VMFirstNav
 		{
 			await FormsNavigation.PopToRootAsync(animate);
 		}
+
+		public void PopTo<T>() where T : class, IViewModel
+		{
+			var pagesToRemove = new List<Page>();
+			var upper = FormsNavigation.NavigationStack.Count;
+
+			// Loop through the nav stack backwards
+			for (int i = upper - 1; i >= 0; i--)
+			{
+				var currentPage = FormsNavigation.NavigationStack[i] as IViewFor;
+
+				// Stop the whole show if one of the pages isn't an IViewFor
+				if (currentPage == null)
+					return;
+
+                var strongTypedPaged = currentPage as IViewFor<T>;
+
+				// If we hit the view model type, break out
+				if (strongTypedPaged != null)
+					break;
+
+				// Finally - always add to the list
+				pagesToRemove.Add(currentPage as Page);
+			}
+
+            foreach (var item in pagesToRemove)
+            {
+                FormsNavigation.RemovePage(item);
+            }
+        }
 
         #endregion
 
