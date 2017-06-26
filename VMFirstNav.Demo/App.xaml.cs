@@ -11,22 +11,22 @@ namespace VMFirstNav.Demo
 
 			// ******
             // MasterDetail Pages
-			// MainPage = new MasterDetailRootPage();//RootTabPage();
+			 MainPage = new MasterDetailRootPage();
 			// ******
 
 			// ******
             // Tab pages
-			// MainPage = RootTabPage();
+			// MainPage = new RootTabPage();
 			// ******
 
 
 			// ******
 			// Sets up a normal navigation stack
 
-			var normalVM = new NormalOneViewModel();
-            var normalPage = new NormalOnePage { ViewModel = normalVM };
+			//var normalVM = new NormalOneViewModel();
+   //         var normalPage = new NormalOnePage { ViewModel = normalVM };
 			
-			MainPage = new NavigationPage(normalPage);
+			//MainPage = new NavigationPage(normalPage);
 			// ******
 		}
 

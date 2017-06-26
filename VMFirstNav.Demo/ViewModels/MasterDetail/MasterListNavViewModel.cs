@@ -60,16 +60,21 @@ namespace VMFirstNav.Demo
 							// Get the view model type
 							var viewModelType = itemToNavigate.GetType().GenericTypeArguments[0];
 
-							// Get a view model instance
-							var viewModel = Activator.CreateInstance(viewModelType) as IViewModel;
+                            // Get a view model instance
+                            var viewModel = Activator.CreateInstance(viewModelType) as IViewModel;
 
 							// Perform the switch
-							_navService.SwitchDetailPage(viewModel);
+							//_navService.SwitchDetailPage(viewModel);
 						}
 					});
 				}
 				return _navCommand;
 			}
 		}
+
+        public T Cast<T>(object input)
+        {
+            return (T)input;
+        }
     }
 }

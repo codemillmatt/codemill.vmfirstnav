@@ -62,32 +62,33 @@ namespace CodeMill.VMFirstNav
 			}
 		}
 
-		public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
-		{
-			var view = InstantiateView(viewModel);
+		//public void SwitchDetailPage<T>(T viewModel) where T : class, IViewModel
+		//{
+            
+		//	var view = InstantiateView(viewModel);
 
-			Page newDetailPage;
+		//	Page newDetailPage;
 
-			// Tab pages shouldn't go into navigation pages
-			if (view is TabbedPage)
-				newDetailPage = (Page)view;
-			else
-				newDetailPage = new NavigationPage((Page)view);
+		//	// Tab pages shouldn't go into navigation pages
+		//	if (view is TabbedPage)
+		//		newDetailPage = (Page)view;
+		//	else
+		//		newDetailPage = new NavigationPage((Page)view);
 
-			DetailPage = newDetailPage;
-		}
+		//	DetailPage = newDetailPage;
+		//}
 
-		public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
-		{
-			T viewModel;
+		//public void SwitchDetailPage<T>(Action<T> initialize = null) where T : class, IViewModel
+		//{
+		//	T viewModel;
 
-			// First instantiate the view model
-			viewModel = Activator.CreateInstance<T>();
-			initialize?.Invoke(viewModel);
+		//	// First instantiate the view model
+		//	viewModel = Activator.CreateInstance<T>();
+		//	initialize?.Invoke(viewModel);
 
-			// Actually switch the page
-			SwitchDetailPage(viewModel);
-		}
+		//	// Actually switch the page
+		//	SwitchDetailPage(viewModel);
+		//}
 
 		#endregion
 
