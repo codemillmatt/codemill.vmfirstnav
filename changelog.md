@@ -1,0 +1,1 @@
+- 0.0.9999 - 1.0.0.22 - Basic setting up of CI and Nuget - see [ReadMe](https://github.com/codemillmatt/codemill.vmfirstnav/blob/master/README.md) and this [blog post](https://codemilltech.com/xamarin-forms-viewmodel-first-navigation-library) for details on how to use the library.
