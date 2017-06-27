@@ -16,10 +16,3 @@ build_script:
 artifacts:
 - path: '*.nupkg'
   name: NuGet
-deploy:
-  provider: NuGet
-  api_key:
-    secure: dJdf3VFwuaIH8oXgb8e1O0CbUu1M+FgSYe+ocMoCqGqC4V8fPkZoJ54NL4xP4sth
-  skip_symbols: true
-  symbol_server:
-  artifact: /. *\.nupkg/
