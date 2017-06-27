@@ -27,7 +27,7 @@ There are 3 main interfaces that are a part of this library.
 `IViewFor<T>` goes onto the `Pages` that are associated with the view model - the `T` will be the `IViewModel` it is associated with. There is one property that must be implemented: `T ViewModel { get; set; }`
 
 In a class that implements `IViewFor<ChildViewModel>` I would recommend implementing that property as follows:
-```
+```csharp
 ChildViewModel vm;
 public ChildViewModel ViewModel { 
     get => vm; 
@@ -44,7 +44,7 @@ At runtime , the library will take care of finding the view -> view-model pairs 
 
 You would do this in either the `AppDelegate` or `MainActivity` class:
 
-```
+```csharp
 NavigationService.Instance.RegisterViewModels(typeof(App).Assembly);
 ```
 
@@ -52,7 +52,7 @@ As you may have noted above - everything runs through a class called `Navigation
 
 It conforms to another interface called `INavigationService` whose definition looks like the following:
 
-```
+```csharp
 public interface INavigationService
 {
     void RegisterViewModels(System.Reflection.Assembly asm);
