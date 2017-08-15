@@ -1,1 +1,2 @@
+- 1.0.1.31 - Added a fix to check if VM already registered. See [PR #14](https://github.com/codemillmatt/codemill.vmfirstnav/pull/14).
 - 0.0.9999 - 1.0.0.22 - Basic setting up of CI and Nuget - see [ReadMe](https://github.com/codemillmatt/codemill.vmfirstnav/blob/master/README.md) and this [blog post](https://codemilltech.com/xamarin-forms-viewmodel-first-navigation-library) for details on how to use the library.
