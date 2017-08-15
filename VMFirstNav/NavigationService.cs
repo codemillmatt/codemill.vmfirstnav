@@ -114,6 +114,10 @@ namespace CodeMill.VMFirstNav
 
 		public void Register(Type viewModelType, Type viewType)
 		{
+            // ensure Register can be called again without register the same viewmodel again.
+		    if (_viewModelViewDictionary.ContainsKey(viewModelType))
+		        return;
+
 			_viewModelViewDictionary.Add(viewModelType, viewType);
 		}
 
