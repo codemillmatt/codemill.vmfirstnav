@@ -201,6 +201,13 @@ namespace CodeMill.VMFirstNav
 			await FormsNavigation.PushModalAsync(nv);
 		}
 
+        public async Task PushModalPlainAsync<T>(T viewModel) where T : class, IViewModel
+        {
+            var view = InstantiateView(viewModel);
+
+            await FormsNavigation.PushModalAsync((Page)view);
+        }
+
 		public async Task PushAsync<T>(Action<T> initialize = null) where T : class, IViewModel
 		{
 			T viewModel;
